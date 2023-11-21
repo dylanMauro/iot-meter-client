@@ -7,10 +7,11 @@ export default function LoginForm({navigation}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const {login, userToken} = useContext(AuthContext)
+  const [error, setError] = useState("")
 
   const handlePress = async () => {
     try {
-      const res = await fetch("http://192.168.18.7:3000/api/client-login", {
+      const res = await fetch("http://localhost:3000/api/client-login", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -22,7 +23,12 @@ export default function LoginForm({navigation}) {
             })
         });
       const token = await res.json()
-      console.log(token.token)
+      if (token.token === undefined ) {
+        setError("Usuario o contraseña incorrecta")
+        setUsername("");
+        setPassword("");
+        return login(null)
+      }
       setUsername("");
       setPassword("");
       login(token.token)
@@ -35,28 +41,34 @@ export default function LoginForm({navigation}) {
     <View style={styles.container}>
       <View>
         <View>
-          <Text style={styles.formTitle}>Form</Text>        
+          <Text style={styles.formTitle}>Iniciar Sesión</Text>        
         </View>
         <TextInput
           style={styles.input}
           onChangeText={text => setUsername(text)}
           value={username}
-          placeholder="Username"
+          placeholder="Usuario"
         />
         <TextInput
           style={styles.input}
           onChangeText={text => setPassword(text)}
           value={password}
-          placeholder="Password"
+          placeholder="Contraseña"
+          secureTextEntry={true}
         />
         <View>
+          <View>
+            <Text style={styles.errorText}>
+              {error.length !== 0 ? error : "" }
+            </Text>
+          </View>
           <Text style={styles.notRegistered}>¿Aún no estas registrado? presiona aquí</Text>
           <Pressable 
             onPress={handlePress}
             style={styles.formButton}
             title="Iniciar Sesión"
           >
-            <Text style={styles.formButtonText}>Iniciar Sesión</Text>
+            <Text style={styles.formButtonText}>Ingresar</Text>
           </Pressable>
         </View>
       </View>
@@ -78,6 +90,7 @@ const styles = StyleSheet.create({
   },
   formTitle: {
     fontSize: 25,
+    alignSelf:"center"
     },
   formButton: {    
     marginTop: 15,
@@ -95,5 +108,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "blue",
     marginTop: 6
+  },
+  errorText: {
+    paddingTop:3,
+    color:"red",
+    fontSize:12
   }
+
 });

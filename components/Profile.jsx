@@ -5,7 +5,7 @@ import { View, Text } from "react-native";
 export default function Profile() {
   const [userProfile, setUserProfile] = useState({})
   const getUser = async () => {
-    const res = await fetch("http://192.168.18.7:3000/api/client-profile")
+    const res = await fetch("http://localhost:3000/api/client-profile")
     const data = await res.json()
     setUserProfile(data)
   }
