@@ -11,8 +11,8 @@ export default function AppNav() {
     <NavigationContainer>
       {
         userToken !== null
-        ? (<AuthStack/>)
-        : (<AppStack/>)
+        ? (<AppStack/>)
+        : (<AuthStack/>)
       }
     </NavigationContainer>
   );

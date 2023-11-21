@@ -7,39 +7,33 @@ export default function HomeScreen({navigation}) {
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center', backgroundColor: "#808080"}}>
       <View style={styles.homeCardContainer}>
-        <Pressable onPress={()=> navigation.navigate("Consume")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
+        <Pressable style={styles.homeCard} onPress={()=> navigation.navigate("Consume")}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/consumoel.jpeg")}/>
             <Text style={styles.homeCardTitle}>Revisar consumo</Text>
-          </ImageBackground>
         </Pressable>      
-        <Pressable onPress={()=> navigation.navigate("People")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
-            <Text style={styles.homeCardTitle}>Presiona aqui</Text>
-          </ImageBackground>
+        <Pressable style={styles.homeCard} onPress={()=> navigation.navigate("Consume")}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/descarga.png")}/>
+            <Text style={styles.homeCardTitle}>Revisar consumo</Text>
         </Pressable> 
       </View>
       <View style={styles.homeCardContainer}>
-        <Pressable onPress={()=> navigation.navigate("Consume")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
-            <Text style={styles.homeCardTitle}>Presiona aqui</Text>
-          </ImageBackground>
+      <Pressable style={styles.homeCard} onPress={()=> navigation.navigate("Consume")}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/descarga.png")}/>
+            <Text style={styles.homeCardTitle}>Revisar consumo</Text>
         </Pressable>      
-        <Pressable onPress={()=> navigation.navigate("Consume")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
-            <Text style={styles.homeCardTitle}>Presiona aqui</Text>
-          </ImageBackground>
+        <Pressable style={styles.homeCard} onPress={()=> navigation.navigate("Consume")}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/descarga.png")}/>
+            <Text style={styles.homeCardTitle}>Revisar consumo</Text>
         </Pressable> 
       </View>
       <View style={styles.homeCardContainer}>
-        <Pressable onPress={()=> navigation.navigate("Consume")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
-            <Text style={styles.homeCardTitle}>Presiona aqui</Text>
-          </ImageBackground>
+      <Pressable style={styles.homeCard} onPress={()=> navigation.navigate("Consume")}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/config.png")}/>
+            <Text style={styles.homeCardTitle}>Configuración</Text>
         </Pressable>      
-        <Pressable onPress={()=> navigation.navigate("Consume")}>
-          <ImageBackground style={styles.homeCard} source={{uri: 'https://snack-web-player.s3.us-west-1.amazonaws.com/v2/48/assets/src/react-native-logo.png'}}>
-            <Text style={styles.homeCardTitle}>Presiona aqui</Text>
-          </ImageBackground>
+        <Pressable style={styles.homeCard} onPress={logout}>
+          <Image style={{height:180, width: 180, position: "absolute", borderRadius: 40}} source={require("../assets/cerrar.PNG")}/>
+            <Text style={styles.homeCardTitle}>Cerrar sesión</Text>
         </Pressable> 
       </View>
     </View>
@@ -60,12 +54,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent:"end",
     alignItems:"center",
+    backgroundColor:"#808080",
+    
   },
   homeCardTitle: {
     fontSize: 18,
     color: "white",
     fontFamily:"Cascadia Code",
-    marginBottom:15,   
+    marginBottom:15,
+    padding: 4,
+    borderRadius: 5,   
     backgroundColor:"rgba(0, 0, 0, 0.8)",
   }
 })
